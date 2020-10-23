@@ -14,14 +14,14 @@ func area(c Circulo) float64 {
 }
 
 func main() {
-	c01 := Circulo{}
-	c02 := Circulo{radio: 10}
-	c03 := Circulo{15}
-	c04 := new(Circulo)
-	c05 := &Circulo{200}
-	fmt.Println(c01)
-	fmt.Println(c02)
-	fmt.Println(c03)
-	fmt.Println(c04)
-	fmt.Println(c05)
+	c01 := Circulo{5}
+	// c02 := Circulo{radio: 10}
+	// c03 := Circulo{15}
+	// c04 := new(Circulo)
+	// c05 := &Circulo{200}
+	fmt.Println(area(c01))
+	// fmt.Println(c02)
+	// fmt.Println(c03)
+	// fmt.Println(c04)
+	// fmt.Println(c05)
 }
