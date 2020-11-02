@@ -5,21 +5,33 @@ import (
 	"time"
 )
 
-func f(n int) {
-	count := 10
-	for i := 0; i < count; i++ {
-		fmt.Println(n, ": ", i)
-		time.Sleep(time.Millisecond * 100)
+func ping(c chan string) {
+	for {
+		c <- "ping"
+	}
+}
+
+func pong(c chan string) {
+	for {
+		c <- "pong"
+	}
+}
+
+func printer(c chan string) {
+	for {
+		msg := <-c
+		fmt.Println("Received: ", msg)
+		// fmt.Println("Answered: ")
+		time.Sleep(time.Millisecond * 500)
 	}
 }
 
 func main() {
-	go f(0)
-	go f(1)
-	go f(2)
-	go f(3)
-	go f(4)
-
+	channel := make(chan string)
+	// var c chan string := make(chan string)
+	go ping(channel)
+	go pong(channel)
+	go printer(channel)
 	var input string
 	fmt.Scanln(&input)
 }
