@@ -4,12 +4,14 @@ import (
 	"encoding/gob"
 	"fmt"
 	"net"
+
+	"./person"
 )
 
-type Person struct {
-	Nombre string
-	Email  []string
-}
+// type Person struct {
+// 	Nombre string
+// 	Email  []string
+// }
 
 func server() {
 	s, err := net.Listen("tcp", ":9999")
@@ -28,7 +30,7 @@ func server() {
 }
 
 func handleClient(c net.Conn) {
-	var person Person
+	var person person.Person
 	err := gob.NewDecoder(c).Decode(&person)
 	// b := make([]byte, 100)
 	// bs, err := c.Read(b)

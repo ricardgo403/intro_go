@@ -4,14 +4,11 @@ import (
 	"encoding/gob"
 	"fmt"
 	"net"
+
+	"./person"
 )
 
-type Person struct {
-	Nombre string
-	Email  []string
-}
-
-func client(person Person) {
+func client(person person.Person) {
 	c, err := net.Dial("tcp", ":9999")
 	if err != nil {
 		fmt.Println(err)
@@ -31,7 +28,7 @@ func client(person Person) {
 }
 
 func main() {
-	person := Person{
+	person := person.Person{
 		Nombre: "Ricardo",
 		Email: []string{
 			"ricardojoel.gonzalezv@gmail.com",
