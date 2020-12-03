@@ -2,8 +2,15 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
+
+func cargarHTML(a string) string {
+	html, _ := ioutil.ReadFile(a)
+
+	return string(html)
+}
 
 func root(res http.ResponseWriter, req *http.Request) {
 	// código para retornar algo al navegador
@@ -13,15 +20,7 @@ func root(res http.ResponseWriter, req *http.Request) {
 	)
 	fmt.Fprintf(
 		res,
-		`<DOCTYPE html>
-		<html>
-			<head>
-				<title>Ejemplo Hola</title>
-			</head>
-			<body>
-				Hola Mundo!
-			</body>
-		</html>`,
+		cargarHTML("./webserver1/index.html"),
 	)
 }
 
